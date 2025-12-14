@@ -1,0 +1,60 @@
+# ----------------------------
+# Laravel
+# ----------------------------
+/vendor/
+/node_modules/
+/bootstrap/cache/
+/storage/*.key
+/storage/framework/
+/storage/logs/
+/storage/debugbar/
+/public/storage
+
+.env
+.env.*
+!.env.example
+
+# ----------------------------
+# Cache & compiled files
+# ----------------------------
+.phpunit.result.cache
+.php-cs-fixer.cache
+.phpstorm.meta.php
+
+# ----------------------------
+# IDE / Editor
+# ----------------------------
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# ----------------------------
+# OS files
+# ----------------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------------
+# Logs
+# ----------------------------
+*.log
+
+# ----------------------------
+# Database
+# ----------------------------
+*.sqlite
+*.sqlite3
+
+# ----------------------------
+# Frontend build
+# ----------------------------
+/public/hot
+/public/build
+/mix-manifest.json
+
+# ----------------------------
+# Temporary files
+# ----------------------------
+*.tmp
+*.temp
