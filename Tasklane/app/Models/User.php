@@ -45,4 +45,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // A user can be a part of many projects and a project can have many users
+    public function projects() : BelongsToMany
+    {
+        return $this->belongsToMany(Project::class, 'teams');
+    }
 }
