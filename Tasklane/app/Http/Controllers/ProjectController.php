@@ -13,7 +13,7 @@ class ProjectController extends Controller
         // Use auth() to only get current user's projects
         $projects = auth()->user()->projects()->withCount('tasks')->get();
         
-        return view('projects.index', compact('projects'));
+        return view('dashboard.index', compact('projects'));
     }
 
     // Return project creation form

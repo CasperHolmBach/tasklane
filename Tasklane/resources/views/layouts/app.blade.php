@@ -10,7 +10,7 @@
 
     <nav class="bg-white shadow mb-8 p-4">
         <div class="container mx-auto flex justify-between">
-            <a href="{{ route('projects.index') }}" class="font-bold">MyProjects</a>
+            <a href="{{ route('dashboard') }}" class="font-bold">Tasklane</a>
             <div>
                 @auth
                     <span class="mr-4">Hello, {{ auth()->user()->name }}</span>
