@@ -8,6 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
+    public function showRegisterForm()
+    {
+        return view('auth.register');
+    }
+    
     public function register(Request $request)
     {
         // Validate request data for registering
@@ -37,7 +47,7 @@ class AuthController extends Controller
         ]);
 
         // Check database for user with the given credentials
-        if(Auth::attempt($credentials))
+        if(Auth::attempt($data))
         {
             // Regenerate session ID to prevent "session fixation" attacks
             // These are attack where a hacker pre-sets a session ID for a victim
