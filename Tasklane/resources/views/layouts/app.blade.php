@@ -10,9 +10,9 @@
 
     <nav class="bg-white shadow mb-8 p-4">
         <div class="container mx-auto flex justify-between">
-            <a href="{{ route('dashboard') }}" class="font-bold">Tasklane</a>
+            <a href="{{ route('home') }}" class="font-bold">Tasklane</a>
             <div>
-                @auth
+                @auth <!-- Auth based visibility -->
                     <span class="mr-4">Hello, {{ auth()->user()->name }}</span>
                     <form action="{{ route('logout') }}" method="POST" class="inline">
                         @csrf
