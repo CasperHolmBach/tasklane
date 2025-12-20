@@ -6,7 +6,7 @@
     <title>Project Manager</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 min-h-screen flex flex-col">
 
     <nav class="bg-white shadow mb-8 p-4">
         <div class="container mx-auto flex justify-between">
@@ -25,7 +25,7 @@
         </div>
     </nav>
 
-    <main class="container mx-auto">
+    <main class="flex-grow container mx-auto">
         @if(session('success'))
             <div class="bg-green-200 p-4 mb-4 rounded text-green-800">
                 {{ session('success') }}
@@ -35,12 +35,12 @@
         @yield('content')
     </main>
 
+    <footer class="bg-white shadow mt-20 p-10">
+        <div class="grid grid-cols-3">
+            <div>bob</div>
+            <div>en</div>
+            <div>hyg</div>
+        </div>
+    </footer>   
 </body>
-<footer class="bg-white shadow mt-20 p-10">
-    <div class="grid grid-cols-3">
-        <div>bob</div>
-        <div>en</div>
-        <div>hyg</div>
-    </div>
-</footer>
 </html>
