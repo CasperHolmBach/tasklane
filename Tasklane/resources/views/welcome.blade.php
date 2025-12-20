@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="flex flex-col items-center justify-center min-h-[70vh] text-center">
+<div class="flex flex-col items-center justify-center min-h-[40vh] text-center">
     <h1 class="text-5xl font-extrabold text-gray-900 mb-6">
         Organize your work with <span class="text-blue-600">Tasklane</span>
     </div>
