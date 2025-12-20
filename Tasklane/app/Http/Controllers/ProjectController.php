@@ -19,7 +19,7 @@ class ProjectController extends Controller
     // Return project creation form
     public function create()
     {
-        return view('projects.create');
+        return view('dashboard.create');
     }
 
     // Create a project
