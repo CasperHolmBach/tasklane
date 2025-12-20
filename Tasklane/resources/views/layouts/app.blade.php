@@ -36,4 +36,11 @@
     </main>
 
 </body>
+<footer class="bg-white shadow mt-20 p-10">
+    <div class="grid grid-cols-3">
+        <div>bob</div>
+        <div>en</div>
+        <div>hyg</div>
+    </div>
+</footer>
 </html>
