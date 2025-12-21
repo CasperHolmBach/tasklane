@@ -60,7 +60,7 @@ class AuthController extends Controller
 
         // Send user back to login page.
         return back()->withErrors([
-            'email' => 'This user does not exist',
+            'email' => 'Incorrect user or password',
         ])->onlyInput('email'); // Keeps email to avoid retype
     }
 
