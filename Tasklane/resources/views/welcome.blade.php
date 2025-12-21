@@ -27,17 +27,14 @@
 
     <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
         <div class="p-6">
-            <div class="text-blue-600 text-2xl mb-2">📁</div>
             <h3 class="font-bold text-lg mb-2">Project Tracking</h3>
             <p class="text-gray-500">Keep all your projects in one place with a clear overview of progress.</p>
         </div>
         <div class="p-6">
-            <div class="text-blue-600 text-2xl mb-2">✅</div>
             <h3 class="font-bold text-lg mb-2">Task Management</h3>
             <p class="text-gray-500">Break projects down into smaller tasks and check them off one by one.</p>
         </div>
         <div class="p-6">
-            <div class="text-blue-600 text-2xl mb-2">👥</div>
             <h3 class="font-bold text-lg mb-2">Team Collaboration</h3>
             <p class="text-gray-500">Invite teammates to your projects and work together in real-time.</p>
         </div>
