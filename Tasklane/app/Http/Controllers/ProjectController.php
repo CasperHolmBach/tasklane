@@ -29,6 +29,7 @@ class ProjectController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'start_date' => 'required|date',
         ]);
 
         // Create the project
@@ -37,7 +38,7 @@ class ProjectController extends Controller
         // Attach the current user to the created project via 'teams' pivot table
         $project->users()->attach(auth()->id());
 
-        return redirect()->route('projects.show', $project)->with('success', 'Project created!');
+        return redirect()->route('dashboard')->with('success', 'Project created!');
     }
 
     // Show a specific project with all its tasks and team members

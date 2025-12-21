@@ -49,22 +49,22 @@
             <h3 class="text-xl font-bold mb-4">Create new project</h3>
             <form action="{{ route('projects.store') }}" method="POST">
                 @csrf
-                
+
                 <div class="mb-2">
                     <label>Name</label>
-                    <input type="text" class="border w-full rounded-lg px-3 py-2">
+                    <input name="name" type="text" class="border w-full rounded-lg px-3 py-2">
 
                 </div>
 
                 <div class="mb-2">
                     <label>Description</label>
-                    <textarea rows="4" class="border w-full rounded-lg px-3 py-2"></textarea>
+                    <textarea name="description" rows="4" class="border w-full rounded-lg px-3 py-2"></textarea>
 
                 </div>
 
                 <div class="mb-6">
                     <label>Start Date</label>
-                    <input type="date" class="border w-full rounded-lg px-3 py-2">
+                    <input name="start_date" type="date" class="border w-full rounded-lg px-3 py-2">
 
                 </div>
 
