@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function()
     Route::get('/dashboard', [ProjectController::class, 'index'])->name('dashboard');
 
     Route::resource('projects', ProjectController::class);
+    Route::resource('tasks', TaskController::class);
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

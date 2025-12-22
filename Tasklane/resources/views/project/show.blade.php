@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
+@push('scripts')
+    @vite('resources/js/modal.js')
+@endpush
+
 @section('content')
 <div class="flex flex-col h-screen-90"> <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold text-gray-800">{{ $project->title }} Board</h1>
-        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 transition">
+        <button id="open" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 transition">
             + Add Task
         </button>
     </div>
@@ -29,7 +33,7 @@
                         <p class="text-xs text-gray-500 mt-1 line-clamp-2">{{ $task->description }}</p>
                         
                         <div class="mt-3 flex items-center text-[10px] font-bold uppercase tracking-wider text-gray-400">
-                            <span>Priority: {{ $task->priority ?? 'Medium' }}</span>
+                            <span>Priority: {{ $task->priority }}</span>
                         </div>
                     </div>
                 @endforeach
@@ -41,6 +45,52 @@
             </div>
         </div>
         @endforeach
+    </div>
+    
+    <!-- Create project modal: Hidden until create button is pressed -->
+    <div id="modalContainer" class="hidden fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-xl max-w-md w-full p-6">
+            <h3 class="text-xl font-bold mb-4">Add a new task</h3>
+            <form action="{{ route('tasks.store') }}" method="POST">
+                @csrf
+
+                <input type="hidden" name="project_id" value="{{ $project->id }}">
+
+                <div class="mb-2">
+                    <label>Title</label>
+                    <input name="title" type="text" class="border w-full rounded-lg px-3 py-2">
+                </div>
+
+                <div class="mb-2">
+                    <label>Description</label>
+                    <textarea name="description" rows="4" class="border w-full rounded-lg px-3 py-2"></textarea>
+                </div>
+
+                <div class="mb-2">
+                    <label>Due Date</label>
+                    <input name="due_date" type="date" class="border w-full rounded-lg px-3 py-2">
+                </div>
+                
+                <div clas="mb-6">
+                    <label>Priority</label>
+                    <select name="priority" id="priority" class="w-full px-4 py-3 border rounded-xl appearance-none focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none bg-white transition cursor-pointer">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Critical">Critical</option>
+                    </select>
+                </div>
+
+                <div class="gap-3 mt-6">
+                    <button type="submit" class="bg-blue-600 text-white rounded-lg hover:bg-blue-700 px-2 py-1 transition">
+                        Create
+                    </button>
+                    <button id="cancel" type="button" class="bg-gray-400 text-white rounded-lg hover:bg-gray-500 px-2 py-1 transition">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 @endsection
