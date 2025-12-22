@@ -6,7 +6,7 @@ It is designed to help students and small teams organize their projects, manage 
 ## Tech Stack
 * **Backend:** PHP 8.2+ & [Laravel 12](https://laravel.com/)
 * **Frontend:** [Tailwind CSS](https://tailwindcss.com/)
-* **Database:** MySQL (Relational data storage)
+* **Database:** MySQL
 * **Authentication:** Session-based Authentication with Laravel's built-in security features.
 
 ## Getting started
