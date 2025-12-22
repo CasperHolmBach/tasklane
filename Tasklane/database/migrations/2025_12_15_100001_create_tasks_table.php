@@ -11,18 +11,19 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('project_id')
-                  ->constrained('projects') // Peger på 'projects' tabellen
+                  ->constrained('projects')
                   ->onDelete('cascade');
 
             $table->foreignId('assigned_user_id')
-                  ->nullable() // En opgave behøver ikke altid at være tildelt
-                  ->constrained('users') // Peger på 'users' tabellen
-                  ->onDelete('set null'); // Sæt til NULL, hvis brugeren slettes
+                  ->nullable() 
+                  ->constrained('users')
+                  ->onDelete('set null');
 
             $table->string('title');
             $table->text('description')->nullable();
             $table->date('due_date')->nullable();
-            $table->string('status')->default('To Do');
+            $table->enum('status', ['To Do', 'Blocked', 'Doing', 'Testing', 'Done'])
+                    ->default('To Do');
             $table->timestamps();
         });
     }
