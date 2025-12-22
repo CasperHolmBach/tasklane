@@ -14,6 +14,7 @@ class Task extends Model
         'description',
         'due_date',
         'status',
+        'priority',
         'assigned_user_id', // Fk to user that is assigned
     ];
 

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('due_date')->nullable();
             $table->enum('status', ['To Do', 'Blocked', 'Doing', 'Testing', 'Done'])
                     ->default('To Do');
-            $table->enum('priority', ['Low', 'Medium'. 'High'. 'Critical'])
+            $table->enum('priority', ['Low', 'Medium', 'High', 'Critical'])
                     ->default('Low');
             $table->timestamps();
         });
