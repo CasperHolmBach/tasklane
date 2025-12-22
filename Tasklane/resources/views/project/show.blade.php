@@ -22,6 +22,7 @@
             </div>
 
             <div class="p-3 space-y-3 flex-grow overflow-y-auto">
+                <!-- Put the task in the appropriate column-->
                 @foreach($project->tasks->where('status', $status) as $task)
                     <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:border-blue-400 transition cursor-pointer">
                         <h3 class="text-sm font-bold text-gray-800">{{ $task->title }}</h3>
@@ -33,6 +34,7 @@
                     </div>
                 @endforeach
                 
+                <!-- Placeholder text -->
                 @if($project->tasks->where('status', $status)->count() == 0)
                     <p class="text-center text-gray-300 text-xs mt-4 italic">No tasks yet</p>
                 @endif
