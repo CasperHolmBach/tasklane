@@ -46,8 +46,8 @@ class ProjectController extends Controller
     {
         // Eager load tasks and users since this will be used to list everything
         // Avoids N+1 Database queries for related data
-        $project->load(['task.assignedUser', 'users']);
+        $project->load(['tasks', 'users']);
 
-        return view('projects.show', compact('project'));
+        return view('project.show', compact('project'));
     }
 }
