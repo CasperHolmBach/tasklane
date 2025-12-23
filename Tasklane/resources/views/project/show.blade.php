@@ -30,13 +30,30 @@
             <div class="p-3 space-y-3 flex-grow overflow-y-auto">
                 <!-- Put the task in the appropriate column-->
                 @foreach($project->tasks->where('status', $status) as $task)
-                    <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:border-blue-400 transition cursor-pointer">
+                    <div class="relative group bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:border-blue-400 transition cursor-pointer">
                         <h3 class="text-sm font-bold text-gray-800">{{ $task->title }}</h3>
                         <p class="text-xs text-gray-500 mt-1 line-clamp-2">{{ $task->description }}</p>
                         
+                        <!-- Delete button SVG-->
+                        <div class="absolute top-3 right-2 z-20">
+                            <form action="{{ route('tasks.destroy', $task) }}" method="POST" onclick="event.stopPropagation();">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" 
+                                        onclick="return confirm('Delete task?')"
+                                        class="text-gray-300 hover:text-red-600 transition-colors p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+
                         <div class="mt-3 flex items-center text-[10px] font-bold uppercase tracking-wider text-gray-400">
                             <span>Priority: {{ $task->priority }}</span>
                         </div>
+
+                        <!-- Status dropdown -->
                         <form action="{{ route('tasks.updateStatus', $task) }}" method="POST">
                             @csrf
                             @method('PATCH') <select name="status" onchange="this.form.submit()" class="text-[10px] bg-gray-100 border-none rounded p-1 mt-2 cursor-pointer">
@@ -47,6 +64,7 @@
                                 @endforeach
                             </select>
                         </form>
+
                     </div>
                 @endforeach
                 
