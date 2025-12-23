@@ -42,6 +42,18 @@ class TaskController extends Controller
         return back()->with('success', 'Task updated!');
     }
 
+    // Patch task status
+    public function updateStatus(Request $request, Task $task)
+    {
+        $data = $request->validate([
+            'status' => 'required|string'
+        ]);
+
+        $task->update(['status' => $data['status']]);
+
+        return back()->with('success', 'Task moved to ' . $data['status']);
+    }
+
     // Delete a task
     public function destroy(Task $task)
     {

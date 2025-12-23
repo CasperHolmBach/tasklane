@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function()
 
     Route::resource('projects', ProjectController::class);
     Route::resource('tasks', TaskController::class);
+    Route::patch('/tasks/{task}/status', [TaskController::class, 'updateStatus'])->name('tasks.updateStatus');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

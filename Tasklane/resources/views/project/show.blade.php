@@ -22,7 +22,9 @@
         <div class="flex-1 min-w-[250px] bg-gray-50 rounded-xl border border-gray-200 flex flex-col">
             <div class="p-4 border-b border-gray-200 flex justify-between items-center bg-white rounded-t-xl">
                 <h2 class="font-bold text-gray-700 uppercase text-xs tracking-wider">{{ $status }}</h2>
-                <span class="bg-gray-200 text-gray-600 text-xs px-2 py-0.5 rounded-full">0</span>
+                <span class="bg-gray-200 text-gray-600 text-xs px-2 py-0.5 rounded-full">
+                    {{ $project->tasks->where('status', $status)->count() }}
+                </span>
             </div>
 
             <div class="p-3 space-y-3 flex-grow overflow-y-auto">
@@ -35,6 +37,16 @@
                         <div class="mt-3 flex items-center text-[10px] font-bold uppercase tracking-wider text-gray-400">
                             <span>Priority: {{ $task->priority }}</span>
                         </div>
+                        <form action="{{ route('tasks.updateStatus', $task) }}" method="POST">
+                            @csrf
+                            @method('PATCH') <select name="status" onchange="this.form.submit()" class="text-[10px] bg-gray-100 border-none rounded p-1 mt-2 cursor-pointer">
+                                @foreach($statuses as $statusOption)
+                                    <option value="{{ $statusOption }}" {{ $task->status == $statusOption ? 'selected' : '' }}>
+                                        {{ $statusOption }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </form>
                     </div>
                 @endforeach
                 
