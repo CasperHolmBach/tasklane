@@ -44,28 +44,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Form validation
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Look for the form
     const form = document.querySelector('#modalContainer form');
-    
-    if (!form) return;
 
     form.addEventListener('submit', (event) => {
         let errors = [];
-        // Select all text inputs, textareas, and date pickers inside this form
+        
+        // Grab all input types in the form
         const inputs = form.querySelectorAll('input[type="text"], textarea, input[type="date"]');
 
-        inputs.forEach(input => {
-            if (!input.value.trim()) {
+        inputs.forEach(input => 
+        {
+            // Check if the input is empty or just contains spaces
+            if (!input.value.trim()) 
+            {
+                // Get the label text (the element right before the input) to show a helpful error
                 errors.push(`${input.previousElementSibling.innerText} is required.`);
+                
+                // Highlight the specific box in red so the user sees where the mistake is
                 input.classList.add('border-red-500');
-            } else {
+            } else 
+            {
+                // Remove the red highlight if the user has fixed the mistake
                 input.classList.remove('border-red-500');
             }
         });
 
-        if (errors.length > 0) {
+        // Stop the form from sending data to the server
+        if (errors.length > 0) 
+        {
             event.preventDefault();
+            
+            // Show a simple popup listing everything that needs to be filled out
             alert("Please fill in the following fields:\n" + errors.join('\n'));
         }
     });
