@@ -43,3 +43,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Form validation
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('#modalContainer form');
+    
+    if (!form) return;
+
+    form.addEventListener('submit', (event) => {
+        let errors = [];
+        // Select all text inputs, textareas, and date pickers inside this form
+        const inputs = form.querySelectorAll('input[type="text"], textarea, input[type="date"]');
+
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                errors.push(`${input.previousElementSibling.innerText} is required.`);
+                input.classList.add('border-red-500');
+            } else {
+                input.classList.remove('border-red-500');
+            }
+        });
+
+        if (errors.length > 0) {
+            event.preventDefault();
+            alert("Please fill in the following fields:\n" + errors.join('\n'));
+        }
+    });
+});
